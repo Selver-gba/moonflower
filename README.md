@@ -26,7 +26,7 @@ This section is required by the original license of Atmosphere, GPLv2.
 
 ## Credits
 
- * rajkosto, for helping me out with GPIO stuff.
+ * rajkosto, for helping me out with GPIO stuff, and for the PMC shutdown code.
  * ktemkin, for making fusee gelee, and releasing a fusee payload POC.
  * SciresM, for making Atmosphère.
  * Everyone in the ReSwitched Discord. <3
