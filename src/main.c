@@ -122,16 +122,16 @@ u8 gpio_read(u8 bank)
 
 void gpio_render() {
     char gpioBinary[9];
-    printk("             "); // centering
     for (int x = 0; x < 8; x++) { // GPIO banks
+        printk("             "); // centering
+        printk("GPIO Bank %d: ", x); // centering
         memset(gpioBinary, 0x00, sizeof(char) * 9);
         itoa(gpio_read(x), gpioBinary, 2); // number to binary string
         for (int i = 0; i < 8-strlen(gpioBinary); i++) { // 0 padding for binary string
             printk("0");
         }
-        printk("%s", gpioBinary);
+        printk("%s\n", gpioBinary);
     }
-    printk("\n");
 }
 
 u32 btnArray[3] = {0x0, 0x0, 0x0}; // button data
