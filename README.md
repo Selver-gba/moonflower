@@ -1,4 +1,7 @@
 # moonflower ![License](https://img.shields.io/badge/License-GPLv2-blue.svg)
+
+This was forked due to numerous problems with moriczgergo's implementation, including various places where critical data is just flat out *_wrong_*.  I've provided individual pull requests for a fix for each of those issues, but they've yet to be picked up.  <grumble>
+
 A fuse and GPIO dumper for the Switch, to be used with fusée gelée.
 
 *NOTE: Your dump may contain sensitive info that you probably don't want to leak.*
