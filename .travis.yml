@@ -1,5 +1,5 @@
 language: c
-sudo: false
+
 cache:
   directories:
     - /home/travis/devkitPro
@@ -12,9 +12,8 @@ before_install:
   - wget -N https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitARMupdate.pl
 
 install:
-#  - sudo perl devkitARMupdate.pl
   - cd $DEVKITPRO
-  - perl devkitARMupdate.pl
+  - sudo perl devkitARMupdate.pl
   - cd $TRAVIS_BUILD_DIR
 
 script: make
