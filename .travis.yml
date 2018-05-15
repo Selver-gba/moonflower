@@ -1,7 +1,7 @@
 language: c
 
 before_install:
-  - export DEVKITPRO=/opt/devkitPro
+  - export DEVKITPRO=/opt/devkitpro
   - export DEVKITARM=${DEVKITPRO}/devkitARM
   - sudo mkdir -p $DEVKITPRO
   - cd $DEVKITPRO
