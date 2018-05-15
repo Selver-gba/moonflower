@@ -5,7 +5,7 @@ before_install:
   - export DEVKITARM=${DEVKITPRO}/devkitARM
   - sudo mkdir -p $DEVKITPRO
   - cd $DEVKITPRO
-  - sudo wget -N https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitA64update.pl
+  - sudo wget https://raw.githubusercontent.com/Selver-gba/installer/TmpDebug/perl/devkitA64update.pl
 
 install:
   - cd $DEVKITPRO
