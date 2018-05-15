@@ -9,7 +9,7 @@ before_install:
 
 install:
   - cd $DEVKITPRO
-  - sudo perl devkitARM64update.pl
+  - sudo perl devkitA64update.pl
   - cd $TRAVIS_BUILD_DIR
 
 script: make
