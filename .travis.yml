@@ -5,11 +5,11 @@ before_install:
   - export DEVKITARM=${DEVKITPRO}/devkitARM
   - sudo mkdir -p $DEVKITPRO
   - cd $DEVKITPRO
-  - sudo wget -N https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitARMupdate.pl
+  - sudo wget -N https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitA64update.pl
 
 install:
   - cd $DEVKITPRO
-  - sudo perl devkitARMupdate.pl
+  - sudo perl devkitARM64update.pl
   - cd $TRAVIS_BUILD_DIR
 
 script: make
