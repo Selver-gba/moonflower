@@ -19,6 +19,6 @@ script:
   - make clean
   - make
 
-#cache:
-#  directories:
-#  - /home/travis/devkitPro
+cache:
+  directories:
+  - /home/travis/devkitPro
