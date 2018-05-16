@@ -1,22 +1,58 @@
 language: c
 
-before_install:
-  - export DEVKITPRO=/opt/devkitpro
+addons: 
+  apt: 
+    packages: 
+      - p7zip-full
+      - zip
+      - pacman
+
+before_cache:
+  - export DEVKITPRO=/opt/devkitPro
+  - export DEVKITPPC=${DEVKITPRO}/devkitPPC
   - export DEVKITARM=${DEVKITPRO}/devkitARM
-  - sudo mkdir -p $DEVKITPRO
-  - cd $DEVKITPRO
-  - sudo wget https://raw.githubusercontent.com/Selver-gba/installer/TmpDebug/perl/devkitA64update.pl
-  - sudo wget https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitARMupdate.pl
+  - export DEVKITPPC=${DEVKITPRO}/devkitPPC
+  - export DEVKITPSP=${DEVKITPRO}/devkitPSP  
+  - export DEVKITA64=${DEVKITPRO}/devkitA64
+  - rm -rf $DEVKITPRO/*.7z
+  - rm -rf $DEVKITPRO/*.bz2
+  - rm -rf $DEVKITPRO/examples
+  -
+
+before_install:
+  - export DEVKITPRO=/opt/devkitPro
+  - export DEVKITPPC=${DEVKITPRO}/devkitPPC
+  - export DEVKITARM=${DEVKITPRO}/devkitARM
+  - export DEVKITPPC=${DEVKITPRO}/devkitPPC
+  - export DEVKITPSP=${DEVKITPRO}/devkitPSP  
+  - export DEVKITA64=${DEVKITPRO}/devkitA64
 
 install:
-  - cd $DEVKITPRO
-  - sudo perl ./devkitARMupdate.pl
-  - sudo perl ./devkitA64update.pl
-  -
+  # install pacman (in case it's not already there)
+  - sudo apt install pacman
+  # obtain the debian package
+  - cd $TRAVIS_BUILD_DIR  
+  - sudo wget -N https://github.com/devkitPro/pacman/releases/download/v1.0.0/devkitpro-pacman.deb
+  # import the key for the package
+  - pacman-key --recv F7FD5492264BB9D0
+  - pacman-key --lsign F7FD5492264BB9D0
+  # install the package
+  - sudo dpkg -i devkitpro-pacman.deb 
+  ### Add the following lines to /etc/pacman.conf
+  - echo "[dkp-libs]"                                             | sudo tee -a /etc/pacman.conf
+  - echo "Server = http://downloads.devkitpro.org/packages"       | sudo tee -a /etc/pacman.conf
+  - echo "[dkp-linux]"                                            | sudo tee -a /etc/pacman.conf
+  - echo "Server = http://downloads.devkitpro.org/packages/linux" | sudo tee -a /etc/pacman.conf
+  # install the package keyring...
+  - sudo pacman -U https://downloads.devkitpro.org/devkitpro-keyring-r1.787e015-2-any.pkg.tar.xz
+  # update the pacman databases
+  - sudo pacman -Syy
+  # verify by manually listing the packages
+  - sudo packman -Sl dkp-libs
+  # install the package using the predefined group:
+  - sudo packman -S switch-dev
+  # list the installed devkitpro...
   - cd $TRAVIS_BUILD_DIR
   - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive $DEVKITPRO
-  -
-  - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive $TRAVIS_BUILD_DIR
-  -
 
 script: make
