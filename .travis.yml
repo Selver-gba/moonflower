@@ -11,5 +11,8 @@ install:
   - cd $DEVKITPRO
   - sudo perl devkitA64update.pl
   - cd $TRAVIS_BUILD_DIR
+  - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive $DEVKITPRO
+  - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive $TRAVIS_BUILD_DIR
+  
 
 script: make
