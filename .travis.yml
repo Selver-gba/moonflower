@@ -6,13 +6,17 @@ before_install:
   - sudo mkdir -p $DEVKITPRO
   - cd $DEVKITPRO
   - sudo wget https://raw.githubusercontent.com/Selver-gba/installer/TmpDebug/perl/devkitA64update.pl
+  - sudo wget https://raw.githubusercontent.com/devkitPro/installer/master/perl/devkitARMupdate.pl
 
 install:
   - cd $DEVKITPRO
-  - sudo perl devkitA64update.pl
+  - sudo perl ./devkitARMupdate.pl
+  - sudo perl ./devkitA64update.pl
+  -
   - cd $TRAVIS_BUILD_DIR
   - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive $DEVKITPRO
+  -
   - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive $TRAVIS_BUILD_DIR
-  
+  -
 
 script: make
