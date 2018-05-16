@@ -31,7 +31,9 @@ install:
   - cd $TRAVIS_BUILD_DIR
   # install pacman (in case it's not already there)
   - sudo apt install pacman
-  - ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive /usr/bin/pac*
+  - sudo ls --color=auto -l --almost-all --classify --group-directories-first --indicator-style=slash --recursive /pacman*
+  - sudo where pacman
+  - sudo where pacman-key
   
   # possible fix for pacman-key command not found error?
   # See https://github.com/github/ghfw-build-extra/pull/17/commits/e071e678ea5fc9eb1f9e0976dff8629cbcbac273
