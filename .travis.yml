@@ -32,6 +32,7 @@ install:
   # install pacman (in case it's not already there)
   - sudo apt install pacman
   - sudo find / -name pacman*
+  - find / -name pacman*
   
   # possible fix for pacman-key command not found error?
   # See https://github.com/github/ghfw-build-extra/pull/17/commits/e071e678ea5fc9eb1f9e0976dff8629cbcbac273
