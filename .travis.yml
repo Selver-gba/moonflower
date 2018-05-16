@@ -34,8 +34,8 @@ install:
   - cd $TRAVIS_BUILD_DIR  
   - sudo wget -N https://github.com/devkitPro/pacman/releases/download/v1.0.0/devkitpro-pacman.deb
   # import the key for the package
-  - pacman-key --recv F7FD5492264BB9D0
-  - pacman-key --lsign F7FD5492264BB9D0
+  - pacman-key --recv-keys F7FD5492264BB9D0
+  - pacman-key --lsign-key F7FD5492264BB9D0
   # install the package
   - sudo dpkg -i devkitpro-pacman.deb 
   ### Add the following lines to /etc/pacman.conf
